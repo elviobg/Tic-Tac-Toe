@@ -20,6 +20,7 @@ const game = {
 }
 
 const root = document.documentElement;
+let currentStyle =0;
 
 $(document).ready(function() {
     restart();
@@ -123,4 +124,37 @@ function changeWinnerColor(player) {
     $(`.${winnerClass}`).each(function(i, square) {
         square.classList.add(`winner`);
     });
+}
+
+function changeStyle() {
+    const styles = ['default', 'theme1', 'theme2'];
+    currentStyle += 1;
+    if (currentStyle >= styles.length) {
+        currentStyle = 0;
+    }
+    handleThemeUpdate(styles[currentStyle]);
+}
+
+function handleThemeUpdate(theme) {  
+    switch(theme) {    
+        case 'theme1':       
+            root.style.setProperty('--color-player-1', '#d9ed92');
+            root.style.setProperty('--color-player-2', '#184e77');
+            root.style.setProperty('--color-square', '#52b69a');
+            root.style.setProperty('--color-bg', '#34a0a4');
+            break;
+        case 'theme2':        
+            root.style.setProperty('--color-player-1', '#540d6e');
+            root.style.setProperty('--color-player-2', '#0ead69');
+            root.style.setProperty('--color-square', '#9bb1ff');
+            root.style.setProperty('--color-bg', '#e2fdff');
+            break;
+        case 'default': 
+        default:      
+            root.style.setProperty('--color-player-1', '#086788');
+            root.style.setProperty('--color-player-2', '#dd1c1a');
+            root.style.setProperty('--color-square', '#f0c808');
+            root.style.setProperty('--color-bg', '#fff1d0');
+            break;
+    }
 }
