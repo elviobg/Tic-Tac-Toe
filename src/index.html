@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./public/css/game.css" />
     <link rel="stylesheet" href="./public/css/board.css" />
+    <script src="./public/js/jquery_v3.6.0.min.js"></script>
     <title>#TicTacToe</title>
   </head>
   <body>
@@ -21,20 +22,20 @@
           </div>
         </div>
         <div id="board" class="flex-item">
-          <div class="flex-container up">
-            <div class="flex-item square left"><p class="player_1 text">X</p></div>
-            <div class="flex-item square center"><p class="player_1 text">X</p></div>
-            <div class="flex-item square right"><p class="player_2 text">O</p></div>
+          <div class="flex-container">
+            <div class="flex-item square up left"><p class="text">X</p></div>
+            <div class="flex-item square middle center"><p class="text">X</p></div>
+            <div class="flex-item square bottom right"><p class="text">O</p></div>
           </div>
-          <div class="flex-container middle">
-            <div class="flex-item square left"><p class="player_2 text">O</p></div>
-            <div class="flex-item square center"><p class="player_2 text">O</p></div>
-            <div class="flex-item square right"><p class="player_1 text">X</p></div>
+          <div class="flex-container">
+            <div class="flex-item square up left"><p class="text">O</p></div>
+            <div class="flex-item square middle center"><p class="text">O</p></div>
+            <div class="flex-item square bottom right"><p class="text">X</p></div>
           </div>
-          <div class="flex-container bottom">
-            <div class="flex-item square left"><p class="player_1 text">X</p></div>
-            <div class="flex-item square center"><p class="player_2 text">O</p></div>
-            <div class="flex-item square right"><p class="player_1 text">X</p></div>
+          <div class="flex-container">
+            <div class="flex-item square up left"><p class="text">X</p></div>
+            <div class="flex-item square middle center"><p class="text">O</p></div>
+            <div class="flex-item square bottom right"><p class="text">X</p></div>
           </div>
         </div>
         <div id="player_2_panel" class="flex-item panel_2">
