@@ -30,6 +30,9 @@ $(document).ready(function() {
 function restart() {
     $(".square").each(function(i, square) {
         square.firstChild.textContent = '-'
+        square.firstChild.classList.remove(game.players.first.class);
+        square.firstChild.classList.remove(game.players.second.class);
+        square.classList.remove('winner');
     });
     changePlayer();
     $(".banner").text('Your Turn!');
@@ -95,10 +98,11 @@ function checkIfWins (player) {
 }
 
 function changeWinnerColor(player) {
-    var style = getComputedStyle(document.body)
+    
     const winnerClass = getWinnerPossibilities(player);
-    const bg = style.getPropertyValue('--color-bg');
-    const playerColor = style.getPropertyValue(player.css);
-    $(`.${winnerClass}`).css("background-color", playerColor);
-    $(`.${winnerClass} p.${player.class}`).css("color", bg);
+    $(`.${winnerClass}`).each(function(i, square) {
+        square.classList.add(`winner`);
+        square.classList.add(`${player.class}`);
+    });
+    
 }
