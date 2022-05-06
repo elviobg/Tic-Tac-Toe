@@ -28,8 +28,9 @@ function restart() {
         square.firstChild.textContent = '-'
     });
     changePlayer();
+    $(".banner").text('Your Turn!');
     game.finish = false;
-    game.moves = 0;   
+    game.moves = 0;
 }
 
 function getCurrentPlayer() {
@@ -41,6 +42,9 @@ function getCurrentPlayer() {
 
 function changePlayer() {
     game.is_first_player = !game.is_first_player;
+    const player = getCurrentPlayer();
+    $(".banner").hide();
+    $(`.banner.${player.class}`).show();
 }
 
 function executeMove(square) {
@@ -62,7 +66,8 @@ function executeMove(square) {
     player.score +=1;
     game.finish = true;
     
-    $(`.${player.class}.score`)[0].textContent = player.score;
+    $(`.${player.class}.score`).text(player.score);
+    $(`.${player.class}.banner`).text('WINNER!');
 }
 
 function checkIfWins (player) {
