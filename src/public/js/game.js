@@ -77,6 +77,9 @@ function executeMove(square) {
         if ( game.moves == 9) {
             $(".banner").text('DRAW!');
             $(".banner").show();
+            $(".square").each(function(i, square) {
+                square.classList.add(`winner`);
+            });
         }
         return;
     }
