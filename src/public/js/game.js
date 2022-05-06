@@ -1,4 +1,3 @@
-
 const game = {
     players: {
         first: {
@@ -93,9 +92,6 @@ function getWinnerPossibilities(player) {
 
 function checkIfWins (player) {
     return getWinnerPossibilities(player) != null;
-}
-
-function checkDraw () {
 }
 
 function changeWinnerColor(player) {
