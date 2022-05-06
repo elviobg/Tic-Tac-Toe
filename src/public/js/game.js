@@ -58,12 +58,17 @@ function executeMove(square) {
         square.firstChild.classList.contains(game.players.second.class)) {
             return;
     }
+    game.moves += 1;
     square.firstChild.classList.add(getCurrentPlayer().class);
     square.firstChild.textContent = getCurrentPlayer().symbol;
     
     const player = getCurrentPlayer();
     if (!checkIfWins(player)) {
         changePlayer();
+        if ( game.moves == 9) {
+            $(".banner").text('DRAW!');
+            $(".banner").show();
+        }
         return;
     }
 
@@ -88,6 +93,9 @@ function getWinnerPossibilities(player) {
 
 function checkIfWins (player) {
     return getWinnerPossibilities(player) != null;
+}
+
+function checkDraw () {
 }
 
 function changeWinnerColor(player) {
