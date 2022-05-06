@@ -9,11 +9,11 @@
     color: var(--color-square);
 }
 
-.square p.player_1, #player_1_panel p.text{
+.square.player_1 p, #player_1_panel p.text{
     color: var(--color-player-1);
 }
 
-.square p.player_2, #player_2_panel p.text{
+.square.player_2 p, #player_2_panel p.text{
     color: var(--color-player-2);
 }
 

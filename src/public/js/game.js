@@ -30,14 +30,21 @@ $(document).ready(function() {
 function restart() {
     $(".square").each(function(i, square) {
         square.firstChild.textContent = '-'
-        square.firstChild.classList.remove(game.players.first.class);
-        square.firstChild.classList.remove(game.players.second.class);
+        square.classList.remove(game.players.first.class);
+        square.classList.remove(game.players.second.class);
         square.classList.remove('winner');
     });
     changePlayer();
     $(".banner").text('Your Turn!');
     game.finish = false;
     game.moves = 0;
+}
+
+function surrender() {
+    restart();
+    const player = getCurrentPlayer();
+    player.score +=1;
+    $(`.${player.class}.score`).text(player.score);
 }
 
 function getCurrentPlayer() {
@@ -56,12 +63,12 @@ function changePlayer() {
 
 function executeMove(square) {
     if( game.finish === true ||
-        square.firstChild.classList.contains(game.players.first.class) ||
-        square.firstChild.classList.contains(game.players.second.class)) {
+        square.classList.contains(game.players.first.class) ||
+        square.classList.contains(game.players.second.class)) {
             return;
     }
     game.moves += 1;
-    square.firstChild.classList.add(getCurrentPlayer().class);
+    square.classList.add(getCurrentPlayer().class);
     square.firstChild.textContent = getCurrentPlayer().symbol;
     
     const player = getCurrentPlayer();
@@ -86,7 +93,7 @@ function getWinnerPossibilities(player) {
     const possibilities = ['diagonal_1', 'diagonal_2', 'up', 'middle', 'bottom', 'left', 'center', 'right']; 
     let winner = null 
     possibilities.forEach(possibility => {
-        if ($(`.${possibility} .${player.class}`).length === 3) {
+        if ($(`.${possibility}.${player.class}`).length === 3) {
             winner = possibility;
         }
     });
@@ -98,11 +105,8 @@ function checkIfWins (player) {
 }
 
 function changeWinnerColor(player) {
-    
     const winnerClass = getWinnerPossibilities(player);
     $(`.${winnerClass}`).each(function(i, square) {
         square.classList.add(`winner`);
-        square.classList.add(`${player.class}`);
     });
-    
 }
