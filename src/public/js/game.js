@@ -41,6 +41,8 @@ function restart() {
     game.moves = 0;
     game.starter_is_first_player = !game.starter_is_first_player;
     game.is_first_player = game.starter_is_first_player;
+    $("#restartButton").hide();
+    $("#surrenderButton").show();
 }
 
 function surrender() {
@@ -63,6 +65,7 @@ function changePlayer() {
     const player = getCurrentPlayer();
     $(".banner").hide();
     $(`.banner.${player.class}`).show();
+    $('button').css("background-color", `var(${player.css})`);
 }
 
 function executeMove(square) {
@@ -84,6 +87,8 @@ function executeMove(square) {
             $(".square").each(function(i, square) {
                 square.classList.add(`winner`);
             });
+            $("#restartButton").show();
+            $("#surrenderButton").hide();
         }
         return;
     }
@@ -94,6 +99,8 @@ function executeMove(square) {
     $(`.${player.class}.score`).text(player.score);
     $(`.${player.class}.banner`).text('WINNER!');
     changeWinnerColor(player);
+    $("#restartButton").show();
+    $("#surrenderButton").hide();
 }
 
 function getWinnerPossibilities(player) {
