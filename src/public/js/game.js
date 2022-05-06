@@ -14,6 +14,7 @@ const game = {
         }
     },
     is_first_player: false,
+    starter_is_first_player: false, 
     moves: 0,
     finish: false,
 }
@@ -38,13 +39,16 @@ function restart() {
     $(".banner").text('Your Turn!');
     game.finish = false;
     game.moves = 0;
+    game.starter_is_first_player = !game.starter_is_first_player;
+    game.is_first_player = game.starter_is_first_player;
 }
 
 function surrender() {
-    restart();
+    changePlayer();
     const player = getCurrentPlayer();
     player.score +=1;
     $(`.${player.class}.score`).text(player.score);
+    restart();
 }
 
 function getCurrentPlayer() {
