@@ -1,0 +1,42 @@
+:root{
+    --color-player-1: #086788;
+    --color-square: #f0c808;
+    --color-player-2: #dd1c1a;
+    --color-bg: #fff1d0;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+html {
+    font-size: 62,5%;
+    background: var(--color-bg);
+}
+
+.align-items-center {  
+    text-align: center;
+}
+
+.flex-container {
+    display: flex;
+}
+
+.flex-column {
+    flex-direction: column;
+}
+
+.flex-end {
+    justify-content: flex-end;
+}
+
+.flex-item {
+    flex: 1;
+}
+
+p.text {
+    font-size: 5vw;
+    text-align: center;
+    padding: 2.5vw 0;
+}

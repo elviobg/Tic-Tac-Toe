@@ -1,0 +1,18 @@
+.square {
+    background: var(--color-square);
+    width: 10vw;
+    margin: 0.2vw;
+    cursor: pointer;
+}
+
+.square p {
+    color: var(--color-square);
+}
+
+.square p.player_1, #player_1_panel p.text{
+    color: var(--color-player-1);
+}
+
+.square p.player_2, #player_2_panel p.text{
+    color: var(--color-player-2);
+}
