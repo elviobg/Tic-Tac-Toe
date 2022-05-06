@@ -1,20 +1,25 @@
+
 const game = {
     players: {
         first: {
             score: 0,
             class: 'player_1',
             symbol: 'X',
+            css: '--color-player-1',
         },
         second: {
             score: 0,
             class: 'player_2',
             symbol: 'O',
+            css: '--color-player-2',
         }
     },
     is_first_player: false,
     moves: 0,
     finish: false,
 }
+
+const root = document.documentElement;
 
 $(document).ready(function() {
     restart();
@@ -57,8 +62,7 @@ function executeMove(square) {
     square.firstChild.textContent = getCurrentPlayer().symbol;
     
     const player = getCurrentPlayer();
-    const wins = checkIfWins(player);
-    if (!wins) {
+    if (!checkIfWins(player)) {
         changePlayer();
         return;
     }
@@ -68,15 +72,29 @@ function executeMove(square) {
     
     $(`.${player.class}.score`).text(player.score);
     $(`.${player.class}.banner`).text('WINNER!');
+    changeWinnerColor(player);
+}
+
+function getWinnerPossibilities(player) {
+    const possibilities = ['diagonal_1', 'diagonal_2', 'up', 'middle', 'bottom', 'left', 'center', 'right']; 
+    let winner = null 
+    possibilities.forEach(possibility => {
+        if ($(`.${possibility} .${player.class}`).length === 3) {
+            winner = possibility;
+        }
+    });
+    return winner;
 }
 
 function checkIfWins (player) {
-    const possibilities = ['diagonal_1', 'diagonal_2', 'up', 'middle', 'bottom', 'left', 'center', 'right']; 
-    let wins = false;   
-    possibilities.forEach(possibility => {
-        if ($(`.${possibility} .${player.class}`).length === 3) {
-            wins = true;
-        }
-    });
-    return wins;
+    return getWinnerPossibilities(player) != null;
+}
+
+function changeWinnerColor(player) {
+    var style = getComputedStyle(document.body)
+    const winnerClass = getWinnerPossibilities(player);
+    const bg = style.getPropertyValue('--color-bg');
+    const playerColor = style.getPropertyValue(player.css);
+    $(`.${winnerClass}`).css("background-color", playerColor);
+    $(`.${winnerClass} p.${player.class}`).css("color", bg);
 }
