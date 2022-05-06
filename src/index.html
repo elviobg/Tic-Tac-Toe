@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./public/css/game.css" />
+    <link rel="stylesheet" href="./public/css/board.css" />
+    <script src="./public/js/jquery_v3.6.0.min.js"></script>
+    <title>#TicTacToe</title>
+  </head>
+  <body>
+    <div class="container game">
+      <div class="flex-container">
+        <div id="player_1_panel" class="flex-item">
+          <div class="flex-container flex-column">
+            <div class="flex-item"><p class="player_1 text">Blue X</p></div>
+            <div class="flex-item"><p class="player_1 text score">0</p></div>
+            <div class="flex-item"><p class="player_1 text banner">Your Turn!</p></div>
+          </div>
+        </div>
+        <div id="board" class="flex-item">
+          <div class="flex-container">
+            <div class="flex-item square diagonal_1 up left"><p class="text">X</p></div>
+            <div class="flex-item square up center"><p class="text">X</p></div>
+            <div class="flex-item square diagonal_2 up right"><p class="text">O</p></div>
+          </div>
+          <div class="flex-container">
+            <div class="flex-item square middle left"><p class="text">O</p></div>
+            <div class="flex-item square diagonal_1 diagonal_2 middle center"><p class="text">O</p></div>
+            <div class="flex-item square middle right"><p class="text">X</p></div>
+          </div>
+          <div class="flex-container">
+            <div class="flex-item square diagonal_2 bottom left"><p class="text">X</p></div>
+            <div class="flex-item square bottom center"><p class="text">O</p></div>
+            <div class="flex-item square diagonal_1 bottom right"><p class="text">X</p></div>
+          </div>
+        </div>
+        <div id="player_2_panel" class="flex-item panel_2">
+          <div class="flex-container flex-column flex-end panel_2">
+            <div class="flex-item"><p class="player_2 text">Red O</p></div>
+            <div class="flex-item"><p class="player_2 text score">0</p></div>
+            <div class="flex-item"><p class="player_2 text banner">Your Turn!</p></div>
+          </div>
+        </div>
+      </div>
+      <div class="container container-buttons align-items-center">
+        <div>
+          <button class="dynamic-button" id="restartButton" onclick="restart()">
+            Restart!
+          </button>
+          <button class="dynamic-button" id="surrenderButton" onclick="surrender()">
+            Surrender!
+          </button>
+        <div>
+        <div class="container-buttons" >
+          <button class="dynamic-button" id="surrenderButton" onclick="changeStyle()">
+            Change Style!
+          </button>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="./public/js/game.js"></script>
+</html>
